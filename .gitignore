@@ -146,15 +146,9 @@ supabase/.temp/
 supabase/.branches/
 
 # Scripts output (if any)
-scripts/output/
-scripts/logs/
+scripts/
 
-#docs
-/cimer/docs/architecture.md
-/cimer/docs/env.md
-/cimer/docs/mvp-cmr.md
-/cimer/docs/pwa.md
-/cimer/docs/schema.sql.md
-
+# Docs (non versionnés)
+docs/
 LINT_FIXES.md
-DEPLOYEMENT.md
+DEPLOYMENT.md
