@@ -12,6 +12,7 @@ import { ProfileInfoSection } from '@/components/profile/profile-info-section';
 import { CompanyInfoSection } from '@/components/profile/company-info-section';
 import { VehiclesManagementSection } from '@/components/profile/vehicles-management-section';
 import { BillingInfoSection } from '@/components/profile/billing-info-section';
+import { PasswordChangeSection } from '@/components/profile/password-change-section';
 import type { Tables } from '@/types/database.types'; // adapte le chemin
 
 
@@ -96,24 +97,26 @@ export default function ProfilePage() {
 
       {/* Tabs */}
       <Tabs defaultValue="personal" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="personal" className="gap-2">
-            <User className="h-4 w-4" />
-            Personal
-          </TabsTrigger>
-          <TabsTrigger value="company" className="gap-2">
-            <Building2 className="h-4 w-4" />
-            Company
-          </TabsTrigger>
-          <TabsTrigger value="vehicles" className="gap-2">
-            <Truck className="h-4 w-4" />
-            Vehicles
-          </TabsTrigger>
-          <TabsTrigger value="billing" className="gap-2">
-            <CreditCard className="h-4 w-4" />
-            Billing
-          </TabsTrigger>
-        </TabsList>
+        <div className="w-full overflow-x-auto">
+          <TabsList className="inline-flex w-full min-w-max md:grid md:grid-cols-4">
+            <TabsTrigger value="personal" className="gap-2 min-w-[120px] shrink-0">
+              <User className="h-4 w-4" />
+              Personal
+            </TabsTrigger>
+            <TabsTrigger value="company" className="gap-2 min-w-[120px] shrink-0">
+              <Building2 className="h-4 w-4" />
+              Company
+            </TabsTrigger>
+            <TabsTrigger value="vehicles" className="gap-2 min-w-[120px] shrink-0">
+              <Truck className="h-4 w-4" />
+              Vehicles
+            </TabsTrigger>
+            <TabsTrigger value="billing" className="gap-2 min-w-[120px] shrink-0">
+              <CreditCard className="h-4 w-4" />
+              Billing
+            </TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="personal" className="space-y-4">
           <ProfileInfoSection
@@ -122,6 +125,7 @@ export default function ProfilePage() {
             profile={profile}
             onUpdate={handleProfileUpdate}
           />
+          <PasswordChangeSection userEmail={user.email || ''} />
         </TabsContent>
 
         <TabsContent value="company" className="space-y-4">

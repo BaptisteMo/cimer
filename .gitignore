@@ -147,7 +147,7 @@ supabase/.branches/
 
 # Scripts output (if any)
 scripts/
-
+supabase/migrations/
 # Docs (non versionnés)
 docs/
 LINT_FIXES.md

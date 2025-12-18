@@ -84,9 +84,6 @@ export default function ProtectedLayout({
               CMR Digital
             </h1>
             <div className="flex items-center gap-4">
-              <span className="text-sm text-muted-foreground">
-                {user.email}
-              </span>
               <Button
                 variant="ghost"
                 size="sm"
