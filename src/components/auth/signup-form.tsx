@@ -12,6 +12,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { supabase } from '@/lib/supabaseClient';
 import { signupSchema, type SignupInput } from '@/lib/validations/auth.schema';
+import { getAuthCallbackUrl } from '@/lib/env';
 
 export function SignupForm() {
   const router = useRouter();
@@ -35,6 +36,9 @@ export function SignupForm() {
       const { data: authData, error: signUpError } = await supabase.auth.signUp({
         email: data.email,
         password: data.password,
+        options: {
+          emailRedirectTo: getAuthCallbackUrl(),
+        },
       });
 
       if (signUpError) {

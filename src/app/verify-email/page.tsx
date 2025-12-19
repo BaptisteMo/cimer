@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Mail, ArrowRight, RefreshCw } from 'lucide-react';
 import { supabase } from '@/lib/supabaseClient';
+import { getAuthCallbackUrl } from '@/lib/env';
 
 export default function VerifyEmailPage() {
   const router = useRouter();
@@ -31,6 +32,9 @@ export default function VerifyEmailPage() {
       const { error } = await supabase.auth.resend({
         type: 'signup',
         email: email,
+        options: {
+          emailRedirectTo: getAuthCallbackUrl(),
+        },
       });
 
       if (error) {
