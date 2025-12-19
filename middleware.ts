@@ -14,12 +14,22 @@ export async function middleware(_request: NextRequest) {
 export const config = {
   matcher: [
     /*
-     * Match all request paths except:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - public files (public folder)
+     * Match ONLY protected routes that require authentication:
+     * - /app (dashboard)
+     * - /cmr/* (CMR management pages)
+     * - /profile (user profile)
+     * - /onboarding/* (onboarding flow)
+     *
+     * PUBLIC routes (NOT matched, no auth required):
+     * - / (landing page)
+     * - /login, /signup (auth pages)
+     * - /verify-email
+     * - /api/* (API routes)
+     * - /_next/*, /favicon.ico, etc. (static assets)
      */
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+    '/app/:path*',
+    '/cmr/:path*',
+    '/profile/:path*',
+    '/onboarding/:path*',
   ],
 };

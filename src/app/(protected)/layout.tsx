@@ -23,14 +23,14 @@ export default function ProtectedLayout({
         const { data: { session } } = await supabase.auth.getSession();
 
         if (!session) {
-          router.push('/login');
+          router.push('/');
           return;
         }
 
         setUser(session.user);
       } catch (error) {
         console.error('Error checking auth:', error);
-        router.push('/login');
+        router.push('/');
       } finally {
         setChecking(false);
         setLoading(false);
@@ -44,7 +44,7 @@ export default function ProtectedLayout({
       async (event, session) => {
         if (event === 'SIGNED_OUT' || !session) {
           setUser(null);
-          router.push('/login');
+          router.push('/');
         } else if (session) {
           setUser(session.user);
         }
@@ -59,7 +59,7 @@ export default function ProtectedLayout({
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setUser(null);
-    router.push('/login');
+    router.push('/');
   };
 
   if (checking) {
@@ -89,7 +89,7 @@ export default function ProtectedLayout({
                 size="sm"
                 onClick={() => router.push('/profile')}
               >
-                Profile
+                Profileé
               </Button>
               <Button variant="outline" size="sm" onClick={handleLogout}>
                 Logout
